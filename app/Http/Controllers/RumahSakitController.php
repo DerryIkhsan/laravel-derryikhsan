@@ -73,7 +73,5 @@ class RumahSakitController extends Controller
         $data->delete();
 
         return response(['success' => 'Data berhasil dihapus']);
-
-        // return redirect()->route('rumahsakit.index');
     }
 }

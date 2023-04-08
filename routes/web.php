@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::resource('/rumahsakit', \App\Http\Controllers\RumahSakitController::class);
+Route::resource('/pasien', \App\Http\Controllers\PasienController::class);
+

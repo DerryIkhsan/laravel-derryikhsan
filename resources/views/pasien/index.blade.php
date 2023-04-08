@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Teramedik - Rumah Sakit</title>
+    <title>Teramedik - Pasien</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
@@ -15,18 +15,18 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">Data Rumah Sakit</h3>       
+                    <h3 class="text-center my-4">Data Pasien</h3>       
                     <hr>
                 </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <a href="{{ route('rumahsakit.create') }}" class="btn btn-md btn-success mb-3">Tambah Rumah Sakit</a>
+                        <a href="{{ route('pasien.create') }}" class="btn btn-md btn-success mb-3">Tambah Pasien</a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
+                                <th scope="col">Pasien</th>
                                 <th scope="col">Rumah Sakit</th>
                                 <th scope="col">Alamat</th>
-                                <th scope="col">Email</th>
                                 <th scope="col">Telepon</th>
                                 <th scope="col">#</th>
                               </tr>
@@ -34,12 +34,12 @@
                             <tbody>
                               @forelse ($data as $row)
                                 <tr id="data-{{ $row->id }}">
-                                    <td>{{ $row->rumah_sakit }}</td>
+                                    <td>{{ $row->pasien }}</td>
+                                    <td>{{ $row->id_rumah_sakit }}</td>
                                     <td>{{ $row->alamat }}</td>
-                                    <td>{{ $row->email }}</td>
                                     <td>{{ $row->telepon }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('rumahsakit.edit', $row->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                        <a href="{{ route('pasien.edit', $row->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                         <button type="button" class="btn btn-sm btn-danger" onclick="hapus({{ $row->id }});">HAPUS</button>
                                     </td>
                                 </tr>
@@ -78,14 +78,14 @@
 
             $.ajax({
                 type: "DELETE",
-                url: "/api/rumahsakit/"+id,
+                url: "/api/pasien/"+id,
                 data: {
                     "_token": token
                 },
                 cache: false,
                 success: function (response) {
                     document.getElementById("data-"+id).remove();
-                    toastr.warning(response.success, 'BERHASIL!'); 
+                    toastr.warning(response.success, 'BERHASIL!');
                 }
             });
         }
