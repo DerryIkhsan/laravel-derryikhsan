@@ -14,13 +14,15 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <form action="{{ route('rumahsakit.store') }}" method="POST">
+                        <form action="{{ route('rumahsakit.update', $data->id) }}" method="POST">
                         
                             @csrf
+                            @method('PUT')
+
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Rumah Sakit</label>
-                                <input type="text" class="form-control @error('rumah_sakit') is-invalid @enderror" name="rumah_sakit" value="{{ old('rumah_sakit') }}" placeholder="Rumah Sakit">
+                                <input type="text" class="form-control @error('rumah_sakit') is-invalid @enderror" name="rumah_sakit" value="{{ old('rumah_sakit', $data->rumah_sakit) }}" placeholder="Rumah Sakit">
                             
                                 @error('rumah_sakit')
                                     <div class="alert alert-danger mt-2">
@@ -31,7 +33,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Alamat</label>
-                                <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}" placeholder="Alamat">
+                                <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat', $data->alamat) }}" placeholder="Alamat">
                             
                                 @error('alamat')
                                     <div class="alert alert-danger mt-2">
@@ -41,7 +43,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="font-weight-bold">Email</label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email">
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $data->email) }}" placeholder="Email">
                             
                                 @error('email')
                                     <div class="alert alert-danger mt-2">
@@ -51,7 +53,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="font-weight-bold">Telepon</label>
-                                <input type="text" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}" placeholder="Telepon">
+                                <input type="text" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon', $data->telepon) }}" placeholder="Telepon">
                             
                                 @error('telepon')
                                     <div class="alert alert-danger mt-2">
