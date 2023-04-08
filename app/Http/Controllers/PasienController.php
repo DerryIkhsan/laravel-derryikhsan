@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
+use App\Models\RumahSakit;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -18,21 +19,23 @@ class PasienController extends Controller
     }
 
     public function create(): View {
-        return view('pasien.create');
+        $rs = RumahSakit::get();
+
+        return view('pasien.create', compact('rs'));
     }
 
     public function store(Request $request): RedirectResponse{
 
         //validate form
         $this->validate($request, [
-            // 'rumah_sakit'       => 'required',
+            'rumah_sakit'       => 'required',
             'pasien'            => 'required',
             'alamat'            => 'required',
             'telepon'           => 'required|digits_between:2,12',
         ]);
 
         Pasien::create([
-            'id_rumah_sakit'    => '1',
+            'id_rumah_sakit'    => $request->rumah_sakit,
             'pasien'            => $request->pasien,
             'alamat'            => $request->alamat,
             'telepon'           => $request->telepon,
@@ -43,14 +46,16 @@ class PasienController extends Controller
 
     public function edit($id): View{
         $data = Pasien::findOrFail($id);
+        $rs = RumahSakit::get();
 
-        return view('pasien.edit', compact('data'));
+
+        return view('pasien.edit', compact('data','rs'));
     }
 
     public function update(Request $request, $id): RedirectResponse{
         //validate form
         $this->validate($request, [
-        //    'rumah_sakit'       => 'required',
+           'rumah_sakit'       => 'required',
            'pasien'            => 'required',
            'alamat'            => 'required',
            'telepon'           => 'required|digits_between:2,12',
@@ -59,7 +64,7 @@ class PasienController extends Controller
        $data = Pasien::findOrFail($id);
 
        $data->update([
-           'id_rumah_sakit'    => '1',
+           'id_rumah_sakit'    => $request->rumah_sakit,
            'pasien'            => $request->pasien,
            'alamat'            => $request->alamat,
            'telepon'           => $request->telepon,
