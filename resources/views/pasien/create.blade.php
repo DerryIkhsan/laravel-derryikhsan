@@ -1,3 +1,5 @@
+<x-app-layout>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,3 +88,5 @@
 </script>
 </body>
 </html>
+
+</x-app-layout>

@@ -1,3 +1,5 @@
+<x-app-layout>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,20 +26,22 @@
                         <table class="table table-bordered">
                             <thead>
                               <tr>
+                                <th scope="col">*</th>
                                 <th scope="col">Pasien</th>
-                                <th scope="col">Rumah Sakit</th>
                                 <th scope="col">Alamat</th>
                                 <th scope="col">Telepon</th>
+                                <th scope="col">Rumah Sakit</th>
                                 <th scope="col">#</th>
                               </tr>
                             </thead>
                             <tbody>
                               @forelse ($data as $row)
                                 <tr id="data-{{ $row->id }}">
+                                    <td>{{ $row->id }}</td>
                                     <td>{{ $row->pasien }}</td>
-                                    <td>{{ $row->rumah_sakit->rumah_sakit }}</td>
                                     <td>{{ $row->alamat }}</td>
                                     <td>{{ $row->telepon }}</td>
+                                    <td>{{ $row->rumah_sakit->rumah_sakit }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('pasien.edit', $row->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                         <button type="button" class="btn btn-sm btn-danger" onclick="hapus({{ $row->id }});">HAPUS</button>
@@ -93,3 +97,5 @@
 
 </body>
 </html>
+
+</x-app-layout>

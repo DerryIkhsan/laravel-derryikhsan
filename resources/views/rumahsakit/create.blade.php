@@ -1,3 +1,5 @@
+<x-app-layout>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,3 +76,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+</x-app-layout>

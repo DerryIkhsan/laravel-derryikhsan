@@ -12,8 +12,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('rumahsakit.index')" :active="request()->routeIs(['rumahsakit.index', 'rumahsakit.create', 'rumahsakit.edit'])">
+                        {{ __('Rumah Sakit') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('pasien.index')" :active="request()->routeIs(['pasien.index', 'pasien.create', 'pasien.edit'])">
+                        {{ __('Pasien') }}
                     </x-nav-link>
                 </div>
             </div>

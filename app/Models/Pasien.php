@@ -16,7 +16,7 @@ class Pasien extends Model
     protected $table = 'pasien';
 
     protected $fillable = [
-        'pasien', 'alamat', 'telepon', 'id_rumah_sakit',
+        'id', 'pasien', 'alamat', 'telepon', 'id_rumah_sakit',
     ];
 
     public function rumah_sakit(): BelongsTo{

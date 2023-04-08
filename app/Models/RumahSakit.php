@@ -16,6 +16,6 @@ class RumahSakit extends Model
     protected $table = 'rumah_sakit';
 
     protected $fillable = [
-        'rumah_sakit', 'alamat', 'email', 'telepon'
+        'id', 'rumah_sakit', 'alamat', 'email', 'telepon'
     ];
 }

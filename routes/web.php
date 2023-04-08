@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RumahSakitController;
+use App\Http\Controllers\PasienController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('/rumahsakit', \App\Http\Controllers\RumahSakitController::class)->middleware(['auth', 'verified']);
+Route::resource('/pasien', \App\Http\Controllers\PasienController::class)->middleware(['auth', 'verified']);
+
 require __DIR__.'/auth.php';
+
+
