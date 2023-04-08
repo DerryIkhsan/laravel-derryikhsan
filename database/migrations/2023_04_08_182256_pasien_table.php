@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('pasien', 200)->nullable();
             $table->string('alamat', 200)->nullable();
             $table->string('telepon', 50)->nullable();
-            $table->integer('id_rumah_sakit');
+            $table->foreignId('id_rumah_sakit')->references('id')->on('rumah_sakit')->nullable();
             $table->softDeletes();
             
             $table->timestamps();

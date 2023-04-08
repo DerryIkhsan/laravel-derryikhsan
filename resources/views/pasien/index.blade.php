@@ -35,7 +35,7 @@
                               @forelse ($data as $row)
                                 <tr id="data-{{ $row->id }}">
                                     <td>{{ $row->pasien }}</td>
-                                    <td>{{ $row->id_rumah_sakit }}</td>
+                                    <td>{{ $row->rumah_sakit->rumah_sakit }}</td>
                                     <td>{{ $row->alamat }}</td>
                                     <td>{{ $row->telepon }}</td>
                                     <td class="text-center">

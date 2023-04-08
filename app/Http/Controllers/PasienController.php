@@ -12,7 +12,7 @@ class PasienController extends Controller
 {
     //
     public function index(): View{
-        $data = Pasien::get();
+        $data = Pasien::with(['rumah_sakit'])->get();
 
         return view('pasien.index', compact('data'));
     }
